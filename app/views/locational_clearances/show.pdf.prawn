@@ -1,5 +1,6 @@
 pdf.stroke_horizontal_rule
-pdf.pad(20) { pdf.text "Locational Clearance Application LC-#{@lc.id}" }
+pdf.pad_top(20) { pdf.text "Locational Clearance Application LC-#{@lc.created_at.year}-#{@lc.id}" }
+pdf.pad_bottom(20) { pdf.text @lc.created_at.strftime("%d/%m/%Y") }
 pdf.stroke_horizontal_rule
 
 pdf.pad_top(20) { pdf.text "Name" }

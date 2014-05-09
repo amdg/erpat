@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140509182153) do
+ActiveRecord::Schema.define(version: 20140509200120) do
 
   create_table "locational_clearances", force: true do |t|
     t.string   "first_name"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20140509182153) do
     t.string   "coordinates"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "purpose"
+    t.integer  "status",      default: 0
   end
 
   create_table "users", force: true do |t|
