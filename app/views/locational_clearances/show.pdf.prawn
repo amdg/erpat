@@ -14,5 +14,12 @@ end
 pdf.pad_top(20) { pdf.text "Address" }
 pdf.text @lc.address
 
+pdf.pad_top(20) { pdf.text "Land Use" }
+pdf.text @lc.land_use
+
 pdf.pad_top(20) { pdf.text "Purpose" }
 pdf.text @lc.purpose
+
+pdf.pad(20) { pdf.text "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."}
+
+pdf.stroke_horizontal_rule
