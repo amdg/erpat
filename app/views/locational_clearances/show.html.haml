@@ -1,11 +1,11 @@
 .container
   .row
-    %h3 Locational Clearance LC-#{@lc.id}
+    %h3 Locational Clearance LC-#{@lc.created_at.year}-#{@lc.id}
     %p
-      Name: #{@lc.first_name} #{@lc.last_name.upcase}
+      Name: #{@lc.full_name}
     %p
       Mobile No.: #{@lc.mobile}
     %p
-      Address: #{@lc.address}
+      Address: #{@lc.street_address}
     %p
       Map: HELLO MJ

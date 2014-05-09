@@ -26,10 +26,10 @@ com.glados.views.home.index = {
     '<div class="marker-inner-win"><span class="info-content">'+
     '<h1 class="marker-heading">Apply for this location</h1><p><div class="marker-edit">'+
       '<form action="/locational_clearances" method="POST" name="SaveMarker" id="SaveMarker">'+
-      '<label for="full_name"><span>Full Name :</span><input type="text" name="full_name" placeholder="Full Name" maxlength="40" /></label>'+
-      '<label for="contact_number"><span>Contact Number :</span><input type="text" name="contact_number" placeholder="Contact Number" maxlength="40" /></label>'+
-      '<label for="street_address"><span>Street Address :</span><input type="text" name="street_address" placeholder="Street Address" maxlength="40" /></label>'+
-      '<label for="land_use"><span>Land Use :</span> <select name="land_use" class="save-type"><option value="Agricultural">Agricultural</option>' +
+      '<label for="full_name"><span>Full Name:</span><input type="text" name="full_name" placeholder="Full Name" maxlength="40" /></label>'+
+      '<label for="contact_number"><span>Contact Number:</span><input type="text" name="contact_number" placeholder="Contact Number" maxlength="40" /></label>'+
+      '<label for="address"><span>Address:</span><input type="text" name="address" placeholder="Address" maxlength="40" /></label>'+
+      '<label for="land_use"><span>Land Use:</span> <select name="land_use" class="save-type"><option value="Agricultural">Agricultural</option>' +
       '<option value="Agricultural Nursery">Agricultural Nursery</option>'+
       '<option value="Agri-industrial">Agri-industrial</option>' +
       '<option value="Cemeteries">Cemeteries</option>' +
@@ -48,7 +48,7 @@ com.glados.views.home.index = {
       '<option value="River">River</option>' +
       '<option value="Transport/Utilities">Transport/Utilities</option>' +
       '</select></label>'+
-      '<label for="purpose"><span>Purpose :</span><textarea name="purpose" class="save-desc" placeholder="Enter Purpose" maxlength="150"></textarea></label>'+
+      '<label for="purpose"><span>Purpose:</span><textarea name="purpose" class="save-desc" placeholder="Enter Purpose" maxlength="150"></textarea></label>'+
       '<input type="hidden" name="lat" id="loc_lat" value="0" />'+
       '<input type="hidden" name="long" id="loc_long" value="0" />'+
       '</form>'+
