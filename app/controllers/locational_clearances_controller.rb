@@ -18,6 +18,6 @@ class LocationalClearancesController < ApplicationController
   private
 
   def sanitized_params
-    params.require(:locational_clearance).permit(:first_name, :last_name, :mobile, :address, :coordinates)
+    params.require(:locational_clearance).permit(:first_name, :last_name, :contact_number, :street_address, :coordinates, :full_name, :lat, :long, :purpose, :land_use)
   end
 end

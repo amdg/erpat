@@ -78,3 +78,14 @@ div.marker-info-win p{padding: 0px;margin: 10px 0px 10px 0;}
 div.marker-inner-win{padding: 5px;}
 button.save-marker, button.remove-marker{border: none;background: rgba(0, 0, 0, 0);color: #00F;padding: 0px;text-decoration: underline;margin-right: 10px;cursor: pointer;}
 .iwContent{width:500px;}
+
+#checkboxes {
+  position: absolute;
+  top: 30px;
+  right: 10px;
+  font-family: 'arial', 'sans-serif';
+  font-size: 14px;
+  background-color: white;
+  border: 1px solid gray;
+  padding: 5px 10px;
+}
