@@ -143,7 +143,7 @@ com.glados.views.home.index = {
         url: $saveMarkerForm.prop('action'),
         data: $saveMarkerForm.serialize(),
         success: function(response){
-          if(data.status === 'success') {
+          if(response.status === 'success') {
             toastr.success('Preparing your Application Form', 'Done!');
             setTimeout(function(){ window.location.href='/locational_clearances/' + response.lc_id; }, 2000);
           } else {
