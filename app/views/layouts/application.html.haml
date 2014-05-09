@@ -2,7 +2,7 @@
 %html
   %head
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
-    %title= content_for?(:title) ? yield(:title) : 'Glados'
+    %title= content_for?(:title) ? yield(:title) : 'ERPAT - Electronic Registry for Permit Assessment and Tracking'
     %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Glados'}"}
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => false
     = csrf_meta_tags
