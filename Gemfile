@@ -14,6 +14,7 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'haml-rails'
 gem 'pundit'
+gem 'prawn_plus'
 gem 'simple_form'
 group :development do
   gem 'better_errors'

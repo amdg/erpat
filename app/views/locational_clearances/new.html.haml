@@ -1,0 +1,25 @@
+.container
+  .h3 Locational Clearance Application
+  = form_for(:locational_clearance, url: locational_clearances_path) do |f|
+    .row
+      = f.label :first_name, 'First Name'
+      = f.text_field :first_name
+
+    .row
+      = f.label :last_name, 'Last Name'
+      = f.text_field :last_name
+
+    .row
+      = f.label :mobile, 'Mobile No.'
+      = f.text_field :mobile
+
+    .row
+      = f.label :address
+      = f.text_area :address
+
+    .row
+      = f.label :coordinates
+      = link_to 'Map Goes Here', '#'
+
+    .row
+      = f.submit 'Submit', :class => 'button-xs'
