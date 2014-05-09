@@ -17,7 +17,6 @@ com.glados.views.home.index = {
     }
 
     view.startBtn();
-    view.saveMarkerBtn();
 
     view.map = new google.maps.Map(document.getElementById("map-canvas"),{
       mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -50,8 +49,8 @@ com.glados.views.home.index = {
       '<option value="Transport/Utilities">Transport/Utilities</option>' +
       '</select></label>'+
       '<label for="purpose"><span>Purpose :</span><textarea name="purpose" class="save-desc" placeholder="Enter Purpose" maxlength="150"></textarea></label>'+
-      '<input type="hidden" name="lat" id="loc_lat" />'+
-      '<input type="hidden" name="long" id="loc_long" />'+
+      '<input type="hidden" name="lat" id="loc_lat" value="0" />'+
+      '<input type="hidden" name="long" id="loc_long" value="0" />'+
       '</form>'+
       '</div></p><a href="#" class="btn btn-primary save-marker">Submit Application</a>';
 
@@ -81,12 +80,14 @@ com.glados.views.home.index = {
 //            view.map.panTo(view.marker.getPosition());
             view.map.setZoom(16);
             view.infowindow.open(view.map,view.marker);
+            view.saveMarkerBtn();
+            $('input#loc_lat').val(event.latLng.lat().toFixed(3));
+            $('input#loc_long').val(event.latLng.lng().toFixed(3));
           }, 1000);
 
 
 //          view.map.setCenter(view.marker.getPosition());
-          $('input#loc_lat').val(event.latLng.lat().toFixed(3));
-          $('input#loc_lat').val(event.latLng.lng().toFixed(3));
+
 
         });
 
@@ -97,11 +98,6 @@ com.glados.views.home.index = {
       // Browser doesn't support Geolocation
 
     }
-
-//    var ctaLayer = new google.maps.KmlLayer({
-//      url: 'http://downloads.noah.dost.gov.ph/downloads/special/ondoy/Leyte/abuyog-leyte.KML'
-//    });
-//    ctaLayer.setMap(map);
   },
 
   placeMarker: function(location) {
@@ -128,7 +124,6 @@ com.glados.views.home.index = {
       google.maps.event.addListener(view.layers[i], "status_changed", function() {
         if (view.layers[i].getStatus() != google.maps.KmlLayerStatus.OK) {
           alert("Vector file is invalid or web server works incorrectly");
-
         }
         else {
           view.layers[i].setMap(view.map);
@@ -148,7 +143,9 @@ com.glados.views.home.index = {
         url: $saveMarkerForm.prop('action'),
         data: $saveMarkerForm.serialize(),
         success: function(response){
+          if(data.status === 'success') {
 
+          }
         },
         dataType: 'json'
       });

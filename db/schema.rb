@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140509202657) do
+ActiveRecord::Schema.define(version: 20140509214619) do
 
   create_table "locational_clearances", force: true do |t|
     t.string   "first_name"
@@ -22,8 +22,14 @@ ActiveRecord::Schema.define(version: 20140509202657) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "purpose"
-    t.integer  "status",      default: 0
     t.string   "land_use"
+    t.integer  "status",         default: 0
+    t.string   "street_address"
+    t.string   "land_use"
+    t.string   "contact_number"
+    t.string   "full_name"
+    t.float    "lat"
+    t.float    "long"
   end
 
   create_table "users", force: true do |t|

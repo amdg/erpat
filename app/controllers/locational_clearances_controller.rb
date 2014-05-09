@@ -5,9 +5,15 @@ class LocationalClearancesController < ApplicationController
   end
 
   def create
+    status = 'fail'
     @lc = LocationalClearance.new(sanitized_params)
-    @lc.save
-    redirect_to @lc
+    status = 'success' if @lc.save
+
+    respond_to do |format|
+      format.js {
+        render :json => {status: status, lc_id: @lc.persisted? ? @lc.id : nil}
+      }
+    end
   end
 
   def show
@@ -18,6 +24,6 @@ class LocationalClearancesController < ApplicationController
   private
 
   def sanitized_params
-    params.require(:locational_clearance).permit(:first_name, :last_name, :contact_number, :street_address, :coordinates, :full_name, :lat, :long, :purpose, :land_use)
+    params.permit(:full_name, :contact_number, :street_address, :lat, :long, :purpose, :land_use)
   end
 end
