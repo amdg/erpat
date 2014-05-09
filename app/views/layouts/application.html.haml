@@ -2,14 +2,15 @@
 %html
   %head
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
-    %title= content_for?(:title) ? yield(:title) : 'Erpat'
-    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Erpat'}"}
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    %title= content_for?(:title) ? yield(:title) : 'Glados'
+    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Glados'}"}
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => false
     = csrf_meta_tags
-  %body
-    %header
-      = render 'layouts/navigation'
-    %main{:role => "main"}
-      = render 'layouts/messages'
-      = yield
+  %body{:class => "#{controller_name} #{action_name}"}
+    -#%header
+    -#  = render 'layouts/navigation'
+    = render 'layouts/messages'
+    = yield
+    = javascript_include_tag 'http://maps.googleapis.com/maps/api/js?key=AIzaSyCw-Viepxab4m9pRRQyjm_yRq1uhOj9iPc&sensor=false', 'data-turbolinks-track' => false
+    = javascript_include_tag 'application', 'data-turbolinks-track' => false
+    = render 'layouts/page_specific_js'

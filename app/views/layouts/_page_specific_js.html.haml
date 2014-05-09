@@ -1,0 +1,9 @@
+= javascript_tag do
+  $(document).on("ready", function($) {
+  = "com.glados.init();"
+  = "if (!!com.glados.views.#{namespaced_controller_name} && !!com.glados.views.#{namespaced_controller_action}) { com.glados.views.#{namespaced_controller_action}.init(); }".html_safe if namespaced_controller_action
+  });
+
+
+
+

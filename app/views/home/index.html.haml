@@ -1,4 +1,13 @@
-.container
-  .row
-    %h3 Home
-    = link_to "Apply for Locational Clearance", new_locational_clearance_path
+.fill
+  #map-canvas
+
+  #splash
+    .splash_mask
+      .round_popup
+        .text
+          %h3 Welcome to
+          %h1 Electronic Registry for Permit Assessment and Tracking
+          %h3 (ERPAT)
+          .button
+            %p Get clearance before you start any building work
+            %a#start-now.btn.btn-lg.btn-default{href: "#"} Start now
