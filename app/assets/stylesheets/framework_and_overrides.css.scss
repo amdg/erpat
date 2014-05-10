@@ -47,3 +47,14 @@ section {
 .navbar {
   background:#293d51;
 }
+.navbar-default {
+  .navbar-nav > li > a, .navbar-brand {
+    color:#fff;
+  }
+}
+
+.display-name {
+  color:#fff;
+  display:block;
+  line-height:44px;
+}
