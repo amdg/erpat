@@ -7,8 +7,7 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => false
     = csrf_meta_tags
   %body{:class => "#{controller_name} #{action_name}"}
-    -#%header
-    -#  = render 'layouts/navigation'
+
     = render 'layouts/messages'
     = yield
     = javascript_include_tag 'http://maps.googleapis.com/maps/api/js?key=AIzaSyCw-Viepxab4m9pRRQyjm_yRq1uhOj9iPc&sensor=false', 'data-turbolinks-track' => false

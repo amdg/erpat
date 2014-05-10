@@ -1,11 +1,12 @@
-com.glados.views.home = com.glados.views.home || {};
-com.glados.views.home.index = {
+com.glados.views.locational_clearances = com.glados.views.locational_clearances || {};
+com.glados.views.locational_clearances.index = {
   map: null,
   layers: [],
   marker: null,
   infowindow: null,
+
   init: function(){
-    var view = com.glados.views.home.index;
+    var view = com.glados.views.locational_clearances.index;
 
 
     view.layers[0] = new google.maps.KmlLayer({url: 'http://downloads.noah.dost.gov.ph/downloads/special/landslides/landslide_inventory/nationwide-li.KML', preserveViewport: true, suppressInfoWindows: false});
@@ -16,20 +17,18 @@ com.glados.views.home.index = {
       view.layers[i].setMap(null);
     }
 
-    view.startBtn();
-
     view.map = new google.maps.Map(document.getElementById("map-canvas"),{
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 
     var contentString = '<div class="marker-info-win">'+
-    '<div class="marker-inner-win"><span class="info-content">'+
-    '<h1 class="marker-heading">Apply for this location</h1><p><div class="marker-edit">'+
+      '<div class="marker-inner-win"><span class="info-content">'+
+      '<h1 class="marker-heading">Apply for this location</h1><p><div class="marker-edit">'+
       '<form action="/locational_clearances" method="POST" name="SaveMarker" id="SaveMarker">'+
-      '<label for="full_name"><span>Full Name:</span><input type="text" name="full_name" placeholder="Full Name" maxlength="40" /></label>'+
-      '<label for="contact_number"><span>Contact Number:</span><input type="text" name="contact_number" placeholder="Contact Number" maxlength="40" /></label>'+
-      '<label for="address"><span>Address:</span><input type="text" name="address" placeholder="Address" maxlength="40" /></label>'+
-      '<label for="land_use"><span>Land Use:</span> <select name="land_use" class="save-type"><option value="Agricultural">Agricultural</option>' +
+      '<label for="full_name"><span>Full Name :</span><input type="text" name="full_name" placeholder="Full Name" maxlength="40" /></label>'+
+      '<label for="contact_number"><span>Contact Number :</span><input type="text" name="contact_number" placeholder="Contact Number" maxlength="40" /></label>'+
+      '<label for="street_address"><span>Street Address :</span><input type="text" name="street_address" placeholder="Street Address" maxlength="40" /></label>'+
+      '<label for="land_use"><span>Land Use :</span> <select name="land_use" class="save-type"><option value="Agricultural">Agricultural</option>' +
       '<option value="Agricultural Nursery">Agricultural Nursery</option>'+
       '<option value="Agri-industrial">Agri-industrial</option>' +
       '<option value="Cemeteries">Cemeteries</option>' +
@@ -48,7 +47,7 @@ com.glados.views.home.index = {
       '<option value="River">River</option>' +
       '<option value="Transport/Utilities">Transport/Utilities</option>' +
       '</select></label>'+
-      '<label for="purpose"><span>Purpose:</span><textarea name="purpose" class="save-desc" placeholder="Enter Purpose" maxlength="150"></textarea></label>'+
+      '<label for="purpose"><span>Purpose :</span><textarea name="purpose" class="save-desc" placeholder="Enter Purpose" maxlength="150"></textarea></label>'+
       '<input type="hidden" name="lat" id="loc_lat" value="0" />'+
       '<input type="hidden" name="long" id="loc_long" value="0" />'+
       '</form>'+
@@ -68,29 +67,6 @@ com.glados.views.home.index = {
         view.map.setCenter(myLatlng);
         view.map.setZoom(14);
 
-
-        google.maps.event.addListener(view.map, 'click', function(event) {
-          if(view.marker){
-            view.repositionMarker(event.latLng);
-          } else {
-            view.placeMarker(event.latLng);
-          }
-
-          window.setTimeout(function() {
-//            view.map.panTo(view.marker.getPosition());
-            view.map.setZoom(16);
-            view.infowindow.open(view.map,view.marker);
-            view.saveMarkerBtn();
-            $('input#loc_lat').val(event.latLng.lat().toFixed(3));
-            $('input#loc_long').val(event.latLng.lng().toFixed(3));
-          }, 1000);
-
-
-//          view.map.setCenter(view.marker.getPosition());
-
-
-        });
-
       }, function() {
 
       });
@@ -98,28 +74,43 @@ com.glados.views.home.index = {
       // Browser doesn't support Geolocation
 
     }
+
+    $.get('/locational_clearances/queued.json', function(data){
+      console.log(data);
+      $("#search-doc").typeahead({ source: data });
+    },'json');
+  },
+
+  addMarker:function(location){
+    var view = com.glados.views.locational_clearances.index;
+    if(view.marker){
+      view.repositionMarker(location);
+    } else {
+      view.placeMarker(location);
+    }
+
+    window.setTimeout(function() {
+      view.map.panTo(view.marker.getPosition());
+      view.map.setZoom(16);
+    });
   },
 
   placeMarker: function(location) {
-    var view = com.glados.views.home.index;
+    var view = com.glados.views.locational_clearances.index;
     view.marker = new google.maps.Marker({
       position: location,
       map: view.map
     });
+
   },
 
   repositionMarker: function(location) {
-    com.glados.views.home.index.marker.setPosition(location);
-  },
-
-  startBtn: function(){
-    $('#start-now').on('click', function(){
-      $('#splash').remove();
-    });
+    com.glados.views.locational_clearances.index.marker.setPosition(location);
   },
 
   toggleLayer: function(i){
-    var view = com.glados.views.home.index;
+    var view = com.glados.views.locational_clearances.index;
+
     if (view.layers[i].getMap() === null) {
       google.maps.event.addListener(view.layers[i], "status_changed", function() {
         if (view.layers[i].getStatus() != google.maps.KmlLayerStatus.OK) {
@@ -133,27 +124,6 @@ com.glados.views.home.index = {
     } else {
       view.layers[i].setMap(null);
     }
-  },
-
-  saveMarkerBtn: function(){
-    var $saveMarkerForm = $('form#SaveMarker');
-    $('a.save-marker').on('click', function(){
-      $.ajax({
-        type: "POST",
-        url: $saveMarkerForm.prop('action'),
-        data: $saveMarkerForm.serialize(),
-        success: function(response){
-          if(response.status === 'success') {
-            toastr.success('Preparing your Application Form', 'Done!');
-            setTimeout(function(){ window.location.href='/locational_clearances/' + response.lc_id; }, 2000);
-          } else {
-            toastr.error('Something went wrong.', 'Failed.')
-          }
-        },
-        dataType: 'json'
-      });
-    });
   }
-
 
 }

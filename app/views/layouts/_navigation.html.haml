@@ -8,6 +8,13 @@
         %span.icon-bar
         %span.icon-bar
       = link_to 'Home', root_path, class: 'navbar-brand'
+    .col-sm-6.col-md-6
+      %form.navbar-form{role: "search"}
+        .input-group
+          %input.form-control{name: "locational_clearance_id", placeholder: "Search Document ID", type: "text",  "data-provide"=>"typeahead", id: 'search-doc'}/
+          .input-group-btn
+            %button.btn.btn-default{type: "submit"}
+              %i.glyphicon.glyphicon-search
     .collapse.navbar-collapse
       %ul.nav.navbar-nav
         = render 'layouts/navigation_links'

@@ -3,10 +3,26 @@ class LocationalClearancesController < ApplicationController
   respond_to :pdf
 
   def index
+
+  end
+
+  def list
     @applications = policy_scope(LocationalClearance)
     render json: @applications
   end
   
+  def queued
+    respond_to do |format|
+      format.json {
+        render :json => LocationalClearance.queued.to_json
+      }
+    end
+  end
+
+  def index
+
+  end
+
   def new
   end
 
