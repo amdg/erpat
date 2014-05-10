@@ -28,7 +28,7 @@ com.glados.views.home.index = {
       '<form action="/locational_clearances" method="POST" name="SaveMarker" id="SaveMarker">'+
       '<label for="full_name"><input type="text" name="full_name" placeholder="Full Name" maxlength="40" /></label>'+
       '<label for="contact_number"><input type="text" name="contact_number" placeholder="Contact Number" maxlength="40" /></label>'+
-      '<label for="address"><input type="text" name="address" placeholder="Address" maxlength="40" /></label>'+
+      '<label for="address"><input type="text" name="address" placeholder="Building Address" maxlength="40" /></label>'+
       '<label for="land_use"><select name="land_use" class="save-type"><option value="Agricultural">Agricultural</option>' +
       '<option value="Agricultural Nursery">Agricultural Nursery</option>'+
       '<option value="Agri-industrial">Agri-industrial</option>' +
