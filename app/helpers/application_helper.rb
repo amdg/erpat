@@ -12,4 +12,11 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def application_options(applications)
+    # These are the only valid titles accepted by eWay
+    applications.inject([]) do |apps, app|
+      apps << [app.full_name, app.id]
+    end
+
+  end
 end

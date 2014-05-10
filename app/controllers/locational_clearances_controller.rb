@@ -1,5 +1,5 @@
 class LocationalClearancesController < ApplicationController
-  after_action :verify_authorized, except: [:new, :create, :index, :queued]
+  after_action :verify_authorized, except: [:new, :create, :index, :queued, :list]
   respond_to :pdf
 
   def index
@@ -7,15 +7,13 @@ class LocationalClearancesController < ApplicationController
 
   def list
     @applications = policy_scope(LocationalClearance)
-    render json: @applications
+    respond_to do |format|
+      format.json { render json: @applications }
+      format.html
+    end
   end
   
   def queued
-    # respond_to do |format|
-    #   format.json {
-    #     render :json => LocationalClearance.queued
-    #   }
-    # end
     queued_clearances = LocationalClearance.queued.inject([]) do |lcs, lc|
       lcs << {
           'id' => lc.id.to_s,
@@ -32,6 +30,7 @@ class LocationalClearancesController < ApplicationController
       }
     end
   end
+
 
   def new
   end

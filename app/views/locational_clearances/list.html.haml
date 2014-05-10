@@ -1,0 +1,10 @@
+%header
+  = render 'layouts/approver_navigation'
+.fill.margin-top-50
+  #map-canvas
+  #checkboxes
+    <input type="checkbox" id="layer0" onclick="com.glados.views.locational_clearances.index.toggleLayer(0)">Landslide <br>
+    <input type="checkbox" id="layer1" onclick="com.glados.views.locational_clearances.index.toggleLayer(1)">Storm Surge 1<br>
+    <input type="checkbox" id="layer2" onclick="com.glados.views.locational_clearances.index.toggleLayer(2)">Storm Surge 2<br>
+    <input type="checkbox" id="layer3" onclick="com.glados.views.locational_clearances.index.toggleLayer(3)">Storm Surge 3<br>
+
