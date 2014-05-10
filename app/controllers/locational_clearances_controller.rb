@@ -1,5 +1,5 @@
 class LocationalClearancesController < ApplicationController
-  after_action :verify_authorized, except: [:new, :create, :index, :queued, :list, :approve, :reject]
+  after_action :verify_authorized, except: [:new, :create, :index, :queued, :list, :approve, :reject, :inspect]
   respond_to :pdf
 
   def index
