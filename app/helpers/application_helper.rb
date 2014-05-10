@@ -17,6 +17,13 @@ module ApplicationHelper
     applications.inject([]) do |apps, app|
       apps << [app.full_name, app.id]
     end
+  end
 
+  def large_empty_placeholder(text=nil)
+    haml_tag :div, class: 'jumbotron center' do
+      haml_tag :p, class: 'text-muted' do
+        haml_concat 'Nothing Here'
+      end
+    end
   end
 end

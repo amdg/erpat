@@ -1,5 +1,4 @@
 class LocationalClearancesController < ApplicationController
-  before_filter :authenticate_user!, :only => [:list]
   after_action :verify_authorized, except: [:new, :create, :index, :queued, :list, :approve, :reject]
   respond_to :pdf
 
@@ -41,6 +40,18 @@ class LocationalClearancesController < ApplicationController
   def reject
     lc = LocationalClearance.find(params[:id])
     lc.update_attribute(:status, LocationalClearance.statuses[:rejected])
+    render :json => {status: 'success'}
+  end
+
+  def inspect
+    lc = LocationalClearance.find(params[:id])
+    params.permit(:inspector_note)
+    lc.update_attribute(:inspector_note, params[:inspector_note])
+    if params[:inspector_decision] == 0
+      lc.update_attribute(:status, LocationalClearance.statuses[:inspected])
+    else
+      lc.update_attribute(:status, LocationalClearance.statuses[:rejected])
+    end
     render :json => {status: 'success'}
   end
 

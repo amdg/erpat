@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'locational_clearances/list', :to => 'locational_clearances#list'
   put 'locational_clearances/approve', :to => 'locational_clearances#approve'
   put 'locational_clearances/reject', :to => 'locational_clearances#reject'
+  get 'locational_clearances/inspect', :to => 'locational_clearances#inspect'
   resources :locational_clearances
 
   authenticated :user do
