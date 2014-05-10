@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.1.0'
+gem 'mysql2'
 gem 'rails', '4.1.1'
-gem 'sqlite3'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -16,7 +16,6 @@ gem 'haml-rails'
 gem 'pundit'
 gem 'prawn_plus'
 gem 'simple_form'
-gem 'mysql2'
 gem 'twitter-typeahead-rails', :git => "git://github.com/yourabi/twitter-typeahead-rails.git"
 
 group :development do
@@ -36,6 +35,7 @@ group :development do
   gem 'rb-inotify', :require=>false
 end
 group :development, :test do
+  gem 'sqlite3'
   gem 'factory_girl_rails'
   gem 'pry-rails'
   gem 'pry-rescue'
