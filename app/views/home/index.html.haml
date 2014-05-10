@@ -1,10 +1,25 @@
 .fill
   #map-canvas
   #checkboxes
-    <input type="checkbox" id="layer0" onclick="com.glados.views.home.index.toggleLayer(0)">Landslide <br>
-    <input type="checkbox" id="layer1" onclick="com.glados.views.home.index.toggleLayer(1)">Storm Surge 1<br>
-    <input type="checkbox" id="layer2" onclick="com.glados.views.home.index.toggleLayer(2)">Storm Surge 2<br>
-    <input type="checkbox" id="layer3" onclick="com.glados.views.home.index.toggleLayer(3)">Storm Surge 3<br>
+    -#%input{type:"checkbox", id:"layer0", onclick:"com.glados.views.home.index.toggleLayer(0)"}
+    -#%label{for:"layer0"}
+    -#  Landslide
+    %p Zoning
+    %input{type:"checkbox", id:"layer1", onclick:"com.glados.views.home.index.toggleLayer(1)"}
+    %label{for:"layer1"}
+      Residential
+    %br/
+    %input{type:"checkbox", id:"layer2", onclick:"com.glados.views.home.index.toggleLayer(2)"}
+    %label{for:"layer2"}
+      Commercial
+    %br/
+    %input{type:"checkbox", id:"layer3", onclick:"com.glados.views.home.index.toggleLayer(3)"}
+    %label{for:"layer3"}
+      Agricultural
+    -#<input type="checkbox" id="layer0" onclick="com.glados.views.home.index.toggleLayer(0)">Landslide <br>
+    -#<input type="checkbox" id="layer1" onclick="com.glados.views.home.index.toggleLayer(1)">Storm Surge 1<br>
+    -#<input type="checkbox" id="layer2" onclick="com.glados.views.home.index.toggleLayer(2)">Storm Surge 2<br>
+    -#<input type="checkbox" id="layer3" onclick="com.glados.views.home.index.toggleLayer(3)">Storm Surge 3<br>
     #status
   #splash
     .splash_mask

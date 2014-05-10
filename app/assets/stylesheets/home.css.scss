@@ -25,11 +25,11 @@ html, body {
   height:100%;
   width:100%;
   background:#000;
-  opacity:0.5;
+  opacity:0.8;
 }
 
 .round_popup {
-  background:#18bc9c;
+  background:#18bc9c asset-url('/assets/erpat-icon.png')  center 40px no-repeat;
   color:#fff;
   width:600px;
   height:600px;
@@ -40,10 +40,11 @@ html, body {
   left:50%;
   margin: -300px 0 0 -300px;
 
+
   .text {
     width:560px;
     position:absolute;
-    top:150px;
+    top:200px;
     left:20px;
     text-align:center;
   }
@@ -85,9 +86,10 @@ button.save-marker, button.remove-marker{border: none;background: rgba(0, 0, 0, 
   right: 10px;
   font-family: 'arial', 'sans-serif';
   font-size: 14px;
-  background-color: white;
-  border: 1px solid gray;
-  padding: 5px 10px;
+  background-color: #293d51;
+  color:#fff;
+  padding: 10px;
+  border-radius:5px;
 }
 
 
