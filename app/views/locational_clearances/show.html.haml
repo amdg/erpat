@@ -3,14 +3,17 @@
     .col-lg-10
       %h1 Thank you for your application.
 
-      -#%p We will review your application form to ensure that the building construction conforms to the city's Comprehensive Land Use Plan
-      -#and zoning ordinances.
+      %p We will review your application form to ensure that the building construction conforms to the city's Comprehensive Land Use Plan
+      and zoning ordinances.
 
-      %p Please pay the locational clearance fee at the City Treasurer Office.
+      -#%p Please pay the locational clearance fee at the City Treasurer Office.
     .col-lg-2
+      -#= link_to "show.pdf", class: "btn btn-default btn-print" do
+      -#  %span.glyphicon.glyphicon-print
+      -#  Print PDF
       %button.btn.btn-default.btn-print
         %span.glyphicon.glyphicon-print
-        Print
+        Print PDF
 
   .row
     .col-lg-12
@@ -32,12 +35,12 @@
         Purpose: #{@lc.purpose}
       -#%p
       -#  Map: HELLO MJ
-      %p
-        Amount: PHP 2,926.00
+      -#%p
+      -#  Amount: PHP 2,926.00
 
       %hr
 
-      %p You must submit the following requirements so we can process your building permit application.
+      %p Once you obtain your locational clearance, you must submit the following requirements so we can process your building permit application.
       %ul
         %li Certified true copy of Original Certificate of Title (OCT)/TCT on file with the Registry of Deeds
         %li Photocopy of tax declaration
