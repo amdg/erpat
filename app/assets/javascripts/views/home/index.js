@@ -24,12 +24,12 @@ com.glados.views.home.index = {
 
     var contentString = '<div class="marker-info-win">'+
     '<div class="marker-inner-win"><span class="info-content">'+
-    '<h1 class="marker-heading">Apply for this location</h1><p><div class="marker-edit">'+
+    '<h1 class="marker-heading">Pin the location</h1><div class="marker-edit">'+
       '<form action="/locational_clearances" method="POST" name="SaveMarker" id="SaveMarker">'+
-      '<label for="full_name"><span>Full Name:</span><input type="text" name="full_name" placeholder="Full Name" maxlength="40" /></label>'+
-      '<label for="contact_number"><span>Contact Number:</span><input type="text" name="contact_number" placeholder="Contact Number" maxlength="40" /></label>'+
-      '<label for="address"><span>Address:</span><input type="text" name="address" placeholder="Address" maxlength="40" /></label>'+
-      '<label for="land_use"><span>Land Use:</span> <select name="land_use" class="save-type"><option value="Agricultural">Agricultural</option>' +
+      '<label for="full_name"><input type="text" name="full_name" placeholder="Full Name" maxlength="40" /></label>'+
+      '<label for="contact_number"><input type="text" name="contact_number" placeholder="Contact Number" maxlength="40" /></label>'+
+      '<label for="address"><input type="text" name="address" placeholder="Address" maxlength="40" /></label>'+
+      '<label for="land_use"><select name="land_use" class="save-type"><option value="Agricultural">Agricultural</option>' +
       '<option value="Agricultural Nursery">Agricultural Nursery</option>'+
       '<option value="Agri-industrial">Agri-industrial</option>' +
       '<option value="Cemeteries">Cemeteries</option>' +
@@ -48,11 +48,11 @@ com.glados.views.home.index = {
       '<option value="River">River</option>' +
       '<option value="Transport/Utilities">Transport/Utilities</option>' +
       '</select></label>'+
-      '<label for="purpose"><span>Purpose:</span><textarea name="purpose" class="save-desc" placeholder="Enter Purpose" maxlength="150"></textarea></label>'+
+      '<label for="purpose"><textarea name="purpose" class="save-desc" placeholder="Enter Purpose" maxlength="150"></textarea></label>'+
       '<input type="hidden" name="lat" id="loc_lat" value="0" />'+
       '<input type="hidden" name="long" id="loc_long" value="0" />'+
       '</form>'+
-      '</div></p><a href="#" class="btn btn-primary save-marker">Submit Application</a>';
+      '</div><a href="#" class="btn btn-primary save-marker">Submit</a>';
 
     view.infowindow = new google.maps.InfoWindow({
       content: contentString,
@@ -115,6 +115,7 @@ com.glados.views.home.index = {
   startBtn: function(){
     $('#start-now').on('click', function(){
       $('#splash').remove();
+      $('#instruction').removeClass('hide');
     });
   },
 
@@ -144,7 +145,7 @@ com.glados.views.home.index = {
         data: $saveMarkerForm.serialize(),
         success: function(response){
           if(response.status === 'success') {
-            toastr.success('Preparing your Application Form', 'Done!');
+            toastr.success('Preparing your Application Form...', 'Done!');
             setTimeout(function(){ window.location.href='/locational_clearances/' + response.lc_id; }, 2000);
           } else {
             toastr.error('Something went wrong.', 'Failed.')

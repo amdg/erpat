@@ -69,10 +69,10 @@ html, body {
 .marker-edit label span {width: 100px;float: left;}
 .marker-edit label input, .marker-edit label select{height: 24px;}
 .marker-edit label textarea{height: 60px;}
-.marker-edit label input, .marker-edit label select, .marker-edit label textarea {width: 60%;margin:0px;padding-left: 5px;border: 1px solid #DDD;border-radius: 3px;}
+.marker-edit label input, .marker-edit label select, .marker-edit label textarea {width: 165px;margin:0px;padding-left: 5px;border: 1px solid #DDD;border-radius: 3px;}
 
 /* Marker Info Window */
-h1.marker-heading{color: #585858;margin: 0px;padding: 0px;font: 25px "Trebuchet MS", Arial!important;border-bottom: 1px dotted #D8D8D8;}
+h1.marker-heading{color: #585858;margin: 0px;padding: 0px;font: 23px "Trebuchet MS", Arial!important;border-bottom: 1px dotted #D8D8D8;}
 div.marker-info-win {margin-right: -20px;}
 div.marker-info-win p{padding: 0px;margin: 10px 0px 10px 0;}
 div.marker-inner-win{padding: 5px;}
@@ -88,4 +88,20 @@ button.save-marker, button.remove-marker{border: none;background: rgba(0, 0, 0, 
   background-color: white;
   border: 1px solid gray;
   padding: 5px 10px;
+}
+
+
+.alert {
+  position:absolute;
+  z-index:104;
+  top:0;
+  left:0;
+  height:50px;
+  width:100%;
+  background:rgba(0,0,0,0.5);
+  border-radius:0;
+
+  p {
+    color:#fff;
+  }
 }
