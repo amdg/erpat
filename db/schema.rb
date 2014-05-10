@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140509224655) do
+ActiveRecord::Schema.define(version: 20140509225220) do
 
   create_table "locational_clearances", force: true do |t|
     t.string   "address"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20140509224655) do
     t.string   "full_name"
     t.float    "lat"
     t.float    "long"
+    t.string   "inspector_note"
   end
 
   create_table "users", force: true do |t|

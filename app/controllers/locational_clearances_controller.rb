@@ -1,5 +1,11 @@
 class LocationalClearancesController < ApplicationController
+  after_action :verify_authorized, except: [:new, :create, :index]
   respond_to :pdf
+
+  def index
+    @applications = policy_scope(LocationalClearance)
+    render json: @applications
+  end
   
   def new
   end
@@ -19,6 +25,7 @@ class LocationalClearancesController < ApplicationController
   def show
     # TODO Obfuscate access URL and restrict anonymous access to within 5 minutes of creating the record
     @lc = LocationalClearance.find(params[:id])
+    authorize @lc
   end
 
   private

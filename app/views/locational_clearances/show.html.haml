@@ -1,11 +1,17 @@
 .container
   .row
     %h3 Locational Clearance LC-#{@lc.created_at.year}-#{@lc.id}
+    %h4 Applicant Information
     %p
       Name: #{@lc.full_name}
     %p
-      Mobile No.: #{@lc.mobile}
+      Contact No.: #{@lc.contact_number}
+    %h4 Site Details
     %p
-      Address: #{@lc.street_address}
+      Address: #{@lc.address}
+    %p
+      Land Use: #{@lc.land_use}
+    %p
+      Purpose: #{@lc.purpose}
     %p
       Map: HELLO MJ
