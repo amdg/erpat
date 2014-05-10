@@ -43,6 +43,18 @@ class LocationalClearancesController < ApplicationController
     render :json => {status: 'success'}
   end
 
+  def inspect
+    lc = LocationalClearance.find(params[:id])
+    params.permit(:inspector_note)
+    lc.update_attribute(:inspector_note, params[:inspector_note])
+    if params[:inspector_decision] == 0
+      lc.update_attribute(:status, LocationalClearance.statuses[:inspected])
+    else
+      lc.update_attribute(:status, LocationalClearance.statuses[:rejected])
+    end
+    render :json => {status: 'success'}
+  end
+
   def new
   end
 
