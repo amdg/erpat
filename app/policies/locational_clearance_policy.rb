@@ -28,7 +28,7 @@ class LocationalClearancePolicy < Struct.new(:user, :record)
 
   def show?
     if @user.nil?
-      @record.created_at > 5.minutes.ago
+      @record.created_at > 12.hours.ago
     else
       @user.admin? or @user.inspector? or @user.approving_officer?
     end
