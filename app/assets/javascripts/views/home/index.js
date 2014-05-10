@@ -22,7 +22,7 @@ com.glados.views.home.index = {
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 
-    var contentString = '<div class="marker-info-win">'+
+    var contentString = '<div class="mediumwindow"><div class="marker-info-win">'+
     '<div class="marker-inner-win"><span class="info-content">'+
     '<h1 class="marker-heading">Pin your location</h1><div class="marker-edit">'+
       '<form action="/locational_clearances" method="POST" name="SaveMarker" id="SaveMarker">'+
@@ -52,7 +52,7 @@ com.glados.views.home.index = {
       '<input type="hidden" name="lat" id="loc_lat" value="0" />'+
       '<input type="hidden" name="long" id="loc_long" value="0" />'+
       '</form>'+
-      '</div><a href="#" class="btn btn-primary save-marker">Submit</a>';
+      '</div><a href="#" class="btn btn-primary save-marker">Submit</a></div>';
 
     view.infowindow = new google.maps.InfoWindow({
       content: contentString,
