@@ -24,7 +24,7 @@ com.glados.views.home.index = {
 
     var contentString = '<div class="marker-info-win">'+
     '<div class="marker-inner-win"><span class="info-content">'+
-    '<h1 class="marker-heading">Pin the location</h1><div class="marker-edit">'+
+    '<h1 class="marker-heading">Pin your location</h1><div class="marker-edit">'+
       '<form action="/locational_clearances" method="POST" name="SaveMarker" id="SaveMarker">'+
       '<label for="full_name"><input type="text" name="full_name" placeholder="Full Name" maxlength="40" /></label>'+
       '<label for="contact_number"><input type="text" name="contact_number" placeholder="Contact Number" maxlength="40" /></label>'+

@@ -1,17 +1,42 @@
 .container
   .row
-    %h3 Locational Clearance LC-#{@lc.created_at.year}-#{@lc.id}
-    %h4 Applicant Information
+
+    %h1 Thank you for your application.
+
+    -#%p We will review your application form to ensure that the building construction conforms to the city's Comprehensive Land Use Plan
+    -#and zoning ordinances.
+
+    %p Please pay the locational clearance fee at the City Treasurer Office.
+
+    %hr
+
+    %h4 Locational Clearance LC-#{@lc.created_at.year}-#{@lc.id}
+    %h5 Applicant Information
     %p
       Name: #{@lc.full_name}
     %p
       Contact No.: #{@lc.contact_number}
-    %h4 Site Details
+
+    %h5 Site Details
     %p
       Address: #{@lc.address}
     %p
       Land Use: #{@lc.land_use}
     %p
       Purpose: #{@lc.purpose}
+    -#%p
+    -#  Map: HELLO MJ
     %p
-      Map: HELLO MJ
+      Amount: PHP 2,926.00
+
+    %hr
+
+    %p You must submit the following requirements so we can process your building permit application.
+    %ul
+      %li Certified true copy of Original Certificate of Title (OCT)/TCT on file with the Registry of Deeds
+      %li Photocopy of tax declaration
+      %li Building permit application form
+      %li Five (5) sets of survey plans, design plans, specifications and other related documents (i.e., architectural documents, civil/structural documents, electrical documents, mechanical documents, sanitary documents, plumbing documents, electronics documents, geodetic documents, and clearances from other agencies)
+      %li Locational clearance from the CPDO
+
+    %p We will notify you once your building permit application has been approved.
