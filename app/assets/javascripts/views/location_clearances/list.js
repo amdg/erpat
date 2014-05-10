@@ -52,7 +52,6 @@ com.glados.views.locational_clearances.list = {
       position: location,
       map: view.map
     });
-
   },
 
   repositionMarker: function(location) {
@@ -93,8 +92,53 @@ com.glados.views.locational_clearances.list = {
         '<p><strong id="applicant-land-use">'+$app.data('app-land-use')+'</strong></p>' +
         '<div class="timeline-body">' +
         '<p id="applicant-purpose">'+$app.data('app-purpose')+'</p>' +
-        '</div></div></div>';
+        '</div></div></div>' +
+        '<div><a href="#" class="btn btn-success approve-app" data-app-id="'+$app.data('app-id')+'">Approve</a><a href="#" class="btn btn-danger reject-app" data-app-id="'+$app.data('app-id')+'">Reject</a></div>';
+
       view.infowindow.setContent(contentString);
+      view.bindModerationBtns();
+    });
+  },
+
+  bindModerationBtns: function(){
+    $('a.approve-app').on('click', function(e){
+      var $clicked = $(e.currentTarget);
+      var app_id = $clicked.data('app-id');
+      $.ajax({
+        type: "PUT",
+        url: '/locational_clearances/approve',
+        data: {id: app_id},
+        success: function(response){
+          if(response.status === 'success') {
+            toastr.success('Application Form Approved', 'Done!');
+            $('tr#app-cell-'+app_id).remove();
+            com.glados.views.locational_clearances.list.infowindow.close();
+          } else {
+            toastr.error('Something went wrong.', 'Failed.')
+          }
+        },
+        dataType: 'json'
+      });
+    });
+
+    $('a.reject-app').on('click', function(e){
+      var $clicked = $(e.currentTarget);
+      var app_id = $clicked.data('app-id');
+      $.ajax({
+        type: "PUT",
+        url: '/locational_clearances/reject',
+        data: {id: app_id},
+        success: function(response){
+          if(response.status === 'success') {
+            toastr.success('Application has been rejected', 'Done!');
+            $('tr#app-cell-'+app_id).remove();
+            com.glados.views.locational_clearances.list.infowindow.close();
+          } else {
+            toastr.error('Something went wrong.', 'Failed.')
+          }
+        },
+        dataType: 'json'
+      });
     });
   }
 

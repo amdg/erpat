@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :users
   get 'locational_clearances/queued', :to => 'locational_clearances#queued'
   get 'locational_clearances/list', :to => 'locational_clearances#list'
+  put 'locational_clearances/approve', :to => 'locational_clearances#approve'
+  put 'locational_clearances/reject', :to => 'locational_clearances#reject'
   resources :locational_clearances
 
   authenticated :user do

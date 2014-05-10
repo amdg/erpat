@@ -1,6 +1,6 @@
 class LocationalClearancesController < ApplicationController
   before_filter :authenticate_user!, :only => [:list]
-  after_action :verify_authorized, except: [:new, :create, :index, :queued, :list]
+  after_action :verify_authorized, except: [:new, :create, :index, :queued, :list, :approve, :reject]
   respond_to :pdf
 
   def index
@@ -32,6 +32,17 @@ class LocationalClearancesController < ApplicationController
     end
   end
 
+  def approve
+    lc = LocationalClearance.find(params[:id])
+    lc.update_attribute(:status, LocationalClearance.statuses[:approved])
+    render :json => {status: 'success'}
+  end
+
+  def reject
+    lc = LocationalClearance.find(params[:id])
+    lc.update_attribute(:status, LocationalClearance.statuses[:rejected])
+    render :json => {status: 'success'}
+  end
 
   def new
   end

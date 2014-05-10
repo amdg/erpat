@@ -11,7 +11,7 @@
   #applications-list.col-md-3
     %table.table.table-striped
       - @applications.each do |app|
-        %tr
+        %tr{id: "app-cell-#{app.id}"}
           %td
             = link_to app.full_name, '#', class: 'inspected-app', 'data-app-full-name' => app.full_name, 'data-app-land-use' => app.land_use,  'data-app-purpose' => app.purpose, 'data-app-id' => app.id, 'data-app-lat' => app.lat, 'data-app-long' => app.long
 
