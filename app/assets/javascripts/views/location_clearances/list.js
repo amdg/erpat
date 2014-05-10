@@ -89,7 +89,7 @@ com.glados.views.locational_clearances.list = {
         '<div class="timeline-heading">        ' +
         '<h4 class="timeline-title" id="applicant-name">'+$app.data('app-full-name')+'</h4>' +
         '<p><small class="text-muted">' +
-        '<i class="glyphicon glyphicon-time" id="applicant-created"></i> 11 hours ago via Twitter</small></p>      ' +
+        '<i class="glyphicon glyphicon-time" id="applicant-created"></i> 11 hours ago</small></p>      ' +
         '</div>' +
         '<p><strong id="applicant-land-use">'+$app.data('app-land-use')+'</strong></p>' +
         '<div class="timeline-body">' +
