@@ -7,30 +7,32 @@ com.glados.views.locational_clearances.list = {
 
   init: function(){
     var view = com.glados.views.locational_clearances.list;
+    if($('#map-canvas').length) {
+      view.layers[0] = new google.maps.KmlLayer({url: 'http://downloads.noah.dost.gov.ph/downloads/special/landslides/landslide_inventory/nationwide-li.KML', preserveViewport: true, suppressInfoWindows: false});
+      view.layers[1] = new google.maps.KmlLayer({url: 'http://downloads.noah.dost.gov.ph/downloads/Iba_na_ang_Panahon_Nationwide_IEC/Region%20III/storm%20surge/HM_0_2.kmz', preserveViewport: true, suppressInfoWindows: false});
+      view.layers[2] = new google.maps.KmlLayer({url: 'http://downloads.noah.dost.gov.ph/downloads/Iba_na_ang_Panahon_Nationwide_IEC/Region%20III/storm%20surge/HM_2_4.kmz', preserveViewport: true, suppressInfoWindows: false});
+      view.layers[3] = new google.maps.KmlLayer({url: 'http://downloads.noah.dost.gov.ph/downloads/Iba_na_ang_Panahon_Nationwide_IEC/Region%20III/storm%20surge/HM_4_6.kmz', preserveViewport: true, suppressInfoWindows: false});
+      for (var i = 0; i < view.layers.length; i++) {
+        view.layers[i].setMap(null);
+      }
 
+      view.map = new google.maps.Map(document.getElementById("map-canvas"),{
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      });
 
-    view.layers[0] = new google.maps.KmlLayer({url: 'http://downloads.noah.dost.gov.ph/downloads/special/landslides/landslide_inventory/nationwide-li.KML', preserveViewport: true, suppressInfoWindows: false});
-    view.layers[1] = new google.maps.KmlLayer({url: 'http://downloads.noah.dost.gov.ph/downloads/Iba_na_ang_Panahon_Nationwide_IEC/Region%20III/storm%20surge/HM_0_2.kmz', preserveViewport: true, suppressInfoWindows: false});
-    view.layers[2] = new google.maps.KmlLayer({url: 'http://downloads.noah.dost.gov.ph/downloads/Iba_na_ang_Panahon_Nationwide_IEC/Region%20III/storm%20surge/HM_2_4.kmz', preserveViewport: true, suppressInfoWindows: false});
-    view.layers[3] = new google.maps.KmlLayer({url: 'http://downloads.noah.dost.gov.ph/downloads/Iba_na_ang_Panahon_Nationwide_IEC/Region%20III/storm%20surge/HM_4_6.kmz', preserveViewport: true, suppressInfoWindows: false});
-    for (var i = 0; i < view.layers.length; i++) {
-      view.layers[i].setMap(null);
+      view.infowindow = new google.maps.InfoWindow({
+        maxWidth: 500,
+        width: 500
+      });
+
+      var myLatlng = new google.maps.LatLng(14.713,120.934);
+      view.map.setCenter(myLatlng);
+      view.map.setZoom(14);
+
+      view.bindViewApplication();
     }
 
-    view.map = new google.maps.Map(document.getElementById("map-canvas"),{
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    });
 
-    view.infowindow = new google.maps.InfoWindow({
-      maxWidth: 500,
-      width: 500
-    });
-
-    var myLatlng = new google.maps.LatLng(14.713,120.934);
-    view.map.setCenter(myLatlng);
-    view.map.setZoom(14);
-
-    view.bindViewApplication();
   },
 
   addMarker:function(location){
@@ -112,6 +114,7 @@ com.glados.views.locational_clearances.list = {
           if(response.status === 'success') {
             toastr.success('Application Form Approved', 'Done!');
             $('tr#app-cell-'+app_id).remove();
+            com.glados.views.locational_clearances.list.reloadIfEmpty();
             com.glados.views.locational_clearances.list.infowindow.close();
           } else {
             toastr.error('Something went wrong.', 'Failed.')
@@ -132,6 +135,7 @@ com.glados.views.locational_clearances.list = {
           if(response.status === 'success') {
             toastr.success('Application has been rejected', 'Done!');
             $('tr#app-cell-'+app_id).remove();
+            com.glados.views.locational_clearances.list.reloadIfEmpty();
             com.glados.views.locational_clearances.list.infowindow.close();
           } else {
             toastr.error('Something went wrong.', 'Failed.')
@@ -140,6 +144,12 @@ com.glados.views.locational_clearances.list = {
         dataType: 'json'
       });
     });
+  },
+
+  reloadIfEmpty: function(){
+    if($('#applications-table tr').length === 0) {
+      setTimeout(function(){ window.location.reload(); }, 2000);
+    }
   }
 
 }

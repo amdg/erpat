@@ -3,26 +3,28 @@
 
   = render 'layouts/navigation'
 .fill.margin-top-50
-  #map-canvas
-  #checkboxes
-    %p Zoning
-    %input{type:"checkbox", id:"layer1", onclick:"com.glados.views.home.index.toggleLayer(1)"}
-    %label{for:"layer1"}
-      Residential
-    %br/
-    %input{type:"checkbox", id:"layer2", onclick:"com.glados.views.home.index.toggleLayer(2)"}
-    %label{for:"layer2"}
-      Commercial
-    %br/
-    %input{type:"checkbox", id:"layer3", onclick:"com.glados.views.home.index.toggleLayer(3)"}
-    %label{for:"layer3"}
-      Agricultural
+  - if @applications.length > 0
+    #map-canvas
+    #checkboxes
+      %p Zoning
+      %input{type:"checkbox", id:"layer1", onclick:"com.glados.views.home.index.toggleLayer(1)"}
+      %label{for:"layer1"}
+        Residential
+      %br/
+      %input{type:"checkbox", id:"layer2", onclick:"com.glados.views.home.index.toggleLayer(2)"}
+      %label{for:"layer2"}
+        Commercial
+      %br/
+      %input{type:"checkbox", id:"layer3", onclick:"com.glados.views.home.index.toggleLayer(3)"}
+      %label{for:"layer3"}
+        Agricultural
 
-  #applications-list.col-md-3
-    %table.table.table-striped
-      - @applications.each do |app|
-        %tr{id: "app-cell-#{app.id}"}
-          %td
-            = link_to app.full_name, '#', class: 'inspected-app', 'data-app-full-name' => app.full_name, 'data-app-land-use' => app.land_use,  'data-app-purpose' => app.purpose, 'data-app-id' => app.id, 'data-app-lat' => app.lat, 'data-app-long' => app.long
-
+    #applications-list.col-md-3
+      %table.table.table-striped
+        - @applications.each do |app|
+          %tr{id: "app-cell-#{app.id}"}
+            %td
+              = link_to app.full_name, '#', class: 'inspected-app', 'data-app-full-name' => app.full_name, 'data-app-land-use' => app.land_use,  'data-app-purpose' => app.purpose, 'data-app-id' => app.id, 'data-app-lat' => app.lat, 'data-app-long' => app.long
+  - else
+    - large_empty_placeholder
 
