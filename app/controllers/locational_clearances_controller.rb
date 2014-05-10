@@ -1,5 +1,4 @@
 class LocationalClearancesController < ApplicationController
-  before_filter :authenticate_user!, :only => [:list]
   after_action :verify_authorized, except: [:new, :create, :index, :queued, :list, :approve, :reject]
   respond_to :pdf
 
