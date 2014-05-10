@@ -10,6 +10,6 @@
 
     = render 'layouts/messages'
     = yield
-    = javascript_include_tag '//maps.googleapis.com/maps/api/js?key=AIzaSyCw-Viepxab4m9pRRQyjm_yRq1uhOj9iPc&sensor=false', 'data-turbolinks-track' => false
+    = javascript_include_tag 'http://maps.googleapis.com/maps/api/js?sensor=false', 'data-turbolinks-track' => false
     = javascript_include_tag 'application', 'data-turbolinks-track' => false
     = render 'layouts/page_specific_js'

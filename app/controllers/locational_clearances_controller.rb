@@ -11,6 +11,11 @@ class LocationalClearancesController < ApplicationController
   end
   
   def queued
+    # respond_to do |format|
+    #   format.json {
+    #     render :json => LocationalClearance.queued
+    #   }
+    # end
     queued_clearances = LocationalClearance.queued.inject([]) do |lcs, lc|
       lcs << {
           'id' => lc.id.to_s,
@@ -26,10 +31,6 @@ class LocationalClearancesController < ApplicationController
         render :json => queued_clearances
       }
     end
-  end
-
-  def index
-
   end
 
   def new

@@ -11,10 +11,8 @@
     .col-sm-6.col-md-6
       %form.navbar-form{role: "search"}
         .input-group
-          %input.form-control{name: "locational_clearance_id", placeholder: "Search Document ID", type: "text",  "data-provide"=>"typeahead", id: 'search-doc'}/
-          .input-group-btn
-            %button.btn.btn-default{type: "submit"}
-              %i.glyphicon.glyphicon-search
+          #remote
+            %input.form-control{name: "locational_clearance_id", placeholder: "Search Document ID", type: "text",  :class=>"typeahead", id: 'search-doc'}/
     .collapse.navbar-collapse
       %ul.nav.navbar-nav
         = render 'layouts/navigation_links'
