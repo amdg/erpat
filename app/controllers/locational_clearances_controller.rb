@@ -1,4 +1,5 @@
 class LocationalClearancesController < ApplicationController
+  before_filter :authenticate_user!, :only => [:list]
   after_action :verify_authorized, except: [:new, :create, :index, :queued, :list]
   respond_to :pdf
 
@@ -50,7 +51,10 @@ class LocationalClearancesController < ApplicationController
   def show
     @lc = LocationalClearance.find(params[:id])
     authorize @lc
-    render json: @lc
+    respond_to do |format|
+      format.json { render json: @lc }
+      format.html
+    end
   end
 
   private
