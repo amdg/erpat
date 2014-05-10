@@ -80,7 +80,7 @@ div.marker-inner-win{padding: 5px;}
 button.save-marker, button.remove-marker{border: none;background: rgba(0, 0, 0, 0);color: #00F;padding: 0px;text-decoration: underline;margin-right: 10px;cursor: pointer;}
 .iwContent{width:500px;}
 
-#checkboxes {
+#applications-list,#checkboxes {
   position: absolute;
   top: 60px;
   right: 10px;
@@ -92,6 +92,9 @@ button.save-marker, button.remove-marker{border: none;background: rgba(0, 0, 0, 
   border-radius:5px;
 }
 
+#applications-list {
+  left: 10px;
+}
 
 .alert {
   position:absolute;

@@ -7,10 +7,7 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      = link_to 'Home', root_path, class: 'navbar-brand'
-    .col-sm-6.col-md-6
-      = simple_form_for :doc do |f|
-        = f.input :applications, collection: application_options(@applications)
+      = link_to 'Approval', root_path, class: 'navbar-brand'
     .collapse.navbar-collapse
       %ul.nav.navbar-nav
         = render 'layouts/navigation_links'

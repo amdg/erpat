@@ -21,19 +21,8 @@ com.glados.views.locational_clearances.index = {
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 
-    var $contentString = $('<div class="timeline-badge">' +
-      '</div><div class="timeline-panel">      ' +
-      '<div class="timeline-heading">        ' +
-      '<h4 class="timeline-title" id="applicant-name">Mussum ipsum cacilds</h4>' +
-      '<p><small class="text-muted">' +
-      '<i class="glyphicon glyphicon-time" id="applicant-created"></i> 11 hours ago via Twitter</small></p>      ' +
-      '</div>' +
-      '<p><strong id="applicant-land-use"></strong></p>' +
-      '<div class="timeline-body">' +
-      '<p id="applicant-purpose">Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>' +
-      '</div></div>');
+
     view.infowindow = new google.maps.InfoWindow({
-      content: $contentString.text(),
       maxWidth: 500,
       width: 500
     });
@@ -68,10 +57,18 @@ com.glados.views.locational_clearances.index = {
       source: docs.ttAdapter()
     }).on('typeahead:selected', function (obj, datum) {
       view.addMarker(new google.maps.LatLng(datum.lat,datum.long));
-      console.log($contentString.find('#applicant-name'));
-      $contentString.find('#applicant-name').html(datum.full_name);
-      $contentString.find('#applicant-purpose').html(datum.purpose);
-      $contentString.find('#applicant-land-use').html(datum.land_use);
+      var contentString = '<div class="bigwindow"><div class="timeline-badge">' +
+        '</div><div class="timeline-panel">      ' +
+        '<div class="timeline-heading">        ' +
+        '<h4 class="timeline-title" id="applicant-name">'+datum.full_name+'</h4>' +
+        '<p><small class="text-muted">' +
+        '<i class="glyphicon glyphicon-time" id="applicant-created"></i> 11 hours ago via Twitter</small></p>      ' +
+        '</div>' +
+        '<p><strong id="applicant-land-use">'+datum.land_use+'</strong></p>' +
+        '<div class="timeline-body">' +
+        '<p id="applicant-purpose">+datum.purpose+</p>' +
+        '</div></div></div>';
+      view.infowindow.setContent(contentString);
     });
 
 
@@ -85,11 +82,9 @@ com.glados.views.locational_clearances.index = {
       view.placeMarker(location);
     }
 
-    window.setTimeout(function() {
-      view.map.panTo(view.marker.getPosition());
-      view.map.setZoom(16);
-      view.infowindow.open(view.map,view.marker);
-    },1000);
+    view.map.panTo(view.marker.getPosition());
+    view.map.setZoom(16);
+    view.infowindow.open(view.map,view.marker);
   },
 
   placeMarker: function(location) {

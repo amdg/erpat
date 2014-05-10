@@ -8,3 +8,11 @@
     <input type="checkbox" id="layer2" onclick="com.glados.views.locational_clearances.index.toggleLayer(2)">Storm Surge 2<br>
     <input type="checkbox" id="layer3" onclick="com.glados.views.locational_clearances.index.toggleLayer(3)">Storm Surge 3<br>
 
+  #applications-list.col-md-3
+    %table.table.table-striped
+      - @applications.each do |app|
+        %tr
+          %td
+            = link_to app.full_name, '#', class: 'inspected-app', 'data-app-id' => app.id, 'data-app-lat' => app.lat, 'data-app-long' => app.long
+
+

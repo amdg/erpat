@@ -38,43 +38,11 @@ com.glados.views.locational_clearances.list = {
       width: 500
     });
 
-    if(navigator.geolocation) {
-      // Locate User
-      navigator.geolocation.getCurrentPosition(function(position) {
-//        var myLatlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        var myLatlng = new google.maps.LatLng(14.713,120.934);
-        view.map.setCenter(myLatlng);
-        view.map.setZoom(14);
+    var myLatlng = new google.maps.LatLng(14.713,120.934);
+    view.map.setCenter(myLatlng);
+    view.map.setZoom(14);
 
-      }, function() {
-
-      });
-    } else {
-      // Browser doesn't support Geolocation
-
-    }
-
-    var docs = new Bloodhound({
-      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('id'),
-      queryTokenizer: Bloodhound.tokenizers.whitespace,
-      prefetch: '/locational_clearances/queued.json',
-      remote: '/locational_clearances/queued.json'
-    });
-    docs.initialize();
-
-    $('#remote .typeahead').typeahead(null, {
-      name: 'lc-docs',
-      displayKey: 'id',
-      source: docs.ttAdapter()
-    }).on('typeahead:selected', function (obj, datum) {
-      view.addMarker(new google.maps.LatLng(datum.lat,datum.long));
-      console.log($contentString.find('#applicant-name'));
-      $contentString.find('#applicant-name').html(datum.full_name);
-      $contentString.find('#applicant-purpose').html(datum.purpose);
-      $contentString.find('#applicant-land-use').html(datum.land_use);
-    });
-
-
+    view.bindViewApplication();
   },
 
   addMarker:function(location){
@@ -85,11 +53,9 @@ com.glados.views.locational_clearances.list = {
       view.placeMarker(location);
     }
 
-    window.setTimeout(function() {
-      view.map.panTo(view.marker.getPosition());
-      view.map.setZoom(16);
-      view.infowindow.open(view.map,view.marker);
-    },1000);
+    view.map.panTo(view.marker.getPosition());
+    view.map.setZoom(16);
+    view.infowindow.open(view.map,view.marker);
   },
 
   placeMarker: function(location) {
@@ -121,6 +87,14 @@ com.glados.views.locational_clearances.list = {
     } else {
       view.layers[i].setMap(null);
     }
+  },
+
+  bindViewApplication: function(){
+    var view = com.glados.views.locational_clearances.list;
+    $('a.inspected-app').on('click', function(e){
+      var $app = $(e.currentTarget);
+      view.addMarker(new google.maps.LatLng($app.data('app-lat'),$app.data('app-long')));
+    });
   }
 
 }
