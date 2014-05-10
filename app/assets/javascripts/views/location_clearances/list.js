@@ -94,6 +94,8 @@ com.glados.views.locational_clearances.list = {
         '<p><strong id="applicant-land-use">'+$app.data('app-land-use')+'</strong></p>' +
         '<div class="timeline-body">' +
         '<p id="applicant-purpose">'+$app.data('app-purpose')+'</p>' +
+        '<p><strong>Inspector\'s Notes and Feedback</strong></p>' +
+        '<p>I know that well enough; but, d\'ye see, the Captain here won\'t believe it; this is his first voyage; he was a Cologne manufacturer before. But come aboard, and mayhap he\'ll believe you, if he won\'t me; and so I\'ll get out of this dirty scrape.</p>'+
         '</div></div></div>' +
         '<div><a href="#" class="btn btn-success approve-app" data-app-id="'+$app.data('app-id')+'">Approve</a><a href="#" class="btn btn-danger reject-app" data-app-id="'+$app.data('app-id')+'">Reject</a></div>';
 
