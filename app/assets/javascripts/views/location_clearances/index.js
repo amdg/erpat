@@ -79,6 +79,8 @@ com.glados.views.locational_clearances.index = {
       console.log(data);
       $("#search-doc").typeahead({ source: data });
     },'json');
+
+
   },
 
   addMarker:function(location){

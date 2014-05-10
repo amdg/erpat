@@ -1,9 +1,8 @@
 class LocationalClearancesController < ApplicationController
-  after_action :verify_authorized, except: [:new, :create, :index]
+  after_action :verify_authorized, except: [:new, :create, :index, :queued]
   respond_to :pdf
 
   def index
-
   end
 
   def list
@@ -12,9 +11,19 @@ class LocationalClearancesController < ApplicationController
   end
   
   def queued
+    queued_clearances = LocationalClearance.queued.inject([]) do |lcs, lc|
+      lcs << {
+          'id' => lc.id.to_s,
+          'lat' => lc.lat.to_s,
+          'long' => lc.long.to_s,
+          'full_name' => lc.full_name || '',
+          'purpose' => lc.purpose || '',
+          'address' => lc.address || ''}
+      lcs
+    end
     respond_to do |format|
       format.json {
-        render :json => LocationalClearance.queued.to_json
+        render :json => queued_clearances
       }
     end
   end
@@ -39,7 +48,6 @@ class LocationalClearancesController < ApplicationController
   end
 
   def show
-    # TODO Obfuscate access URL and restrict anonymous access to within 5 minutes of creating the record
     @lc = LocationalClearance.find(params[:id])
     authorize @lc
   end

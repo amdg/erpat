@@ -1,4 +1,4 @@
-class RemoveMobileFromLocationalClearance < ActiveRecord::Migration
+class RemoveRedundantFieldsFromLocationalClearance < ActiveRecord::Migration
   def change
     remove_column :locational_clearances, :first_name, :string
     remove_column :locational_clearances, :last_name, :string
