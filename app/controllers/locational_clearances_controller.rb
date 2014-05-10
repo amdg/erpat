@@ -8,7 +8,7 @@ class LocationalClearancesController < ApplicationController
   def list
     @applications = policy_scope(LocationalClearance)
     respond_to do |format|
-      format.json { render json: @applications }
+      format.json { render json: LocationalClearance.all }
       format.html
     end
   end
@@ -50,6 +50,7 @@ class LocationalClearancesController < ApplicationController
   def show
     @lc = LocationalClearance.find(params[:id])
     authorize @lc
+    render json: @lc
   end
 
   private
