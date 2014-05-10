@@ -47,7 +47,7 @@ class LocationalClearancesController < ApplicationController
     lc = LocationalClearance.find(params[:id])
     params.permit(:inspector_note)
     lc.update_attribute(:inspector_note, params[:inspector_note])
-    if params[:inspector_decision] == 0
+    if params[:inspector_decision].to_i == 0
       lc.update_attribute(:status, LocationalClearance.statuses[:inspected])
     else
       lc.update_attribute(:status, LocationalClearance.statuses[:rejected])
@@ -76,6 +76,7 @@ class LocationalClearancesController < ApplicationController
     respond_to do |format|
       format.json { render json: @lc }
       format.html
+      format.pdf
     end
   end
 
