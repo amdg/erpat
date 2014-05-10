@@ -66,7 +66,7 @@ com.glados.views.locational_clearances.index = {
         '</div>' +
         '<p><strong id="applicant-land-use">'+datum.land_use+'</strong></p>' +
         '<div class="timeline-body">' +
-        '<p id="applicant-purpose">+datum.purpose+</p>' +
+        '<p id="applicant-purpose">'+datum.purpose+'</p>' +
         '</div></div></div>';
       view.infowindow.setContent(contentString);
     });

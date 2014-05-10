@@ -21,19 +21,7 @@ com.glados.views.locational_clearances.list = {
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
 
-    var $contentString = $('<div class="timeline-badge">' +
-      '</div><div class="timeline-panel">      ' +
-      '<div class="timeline-heading">        ' +
-      '<h4 class="timeline-title" id="applicant-name">Mussum ipsum cacilds</h4>' +
-      '<p><small class="text-muted">' +
-      '<i class="glyphicon glyphicon-time" id="applicant-created"></i> 11 hours ago via Twitter</small></p>      ' +
-      '</div>' +
-      '<p><strong id="applicant-land-use"></strong></p>' +
-      '<div class="timeline-body">' +
-      '<p id="applicant-purpose">Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>' +
-      '</div></div>');
     view.infowindow = new google.maps.InfoWindow({
-      content: $contentString.text(),
       maxWidth: 500,
       width: 500
     });
@@ -94,6 +82,19 @@ com.glados.views.locational_clearances.list = {
     $('a.inspected-app').on('click', function(e){
       var $app = $(e.currentTarget);
       view.addMarker(new google.maps.LatLng($app.data('app-lat'),$app.data('app-long')));
+
+      var contentString = '<div class="bigwindow"><div class="timeline-badge">' +
+        '</div><div class="timeline-panel">      ' +
+        '<div class="timeline-heading">        ' +
+        '<h4 class="timeline-title" id="applicant-name">'+$app.data('app-full-name')+'</h4>' +
+        '<p><small class="text-muted">' +
+        '<i class="glyphicon glyphicon-time" id="applicant-created"></i> 11 hours ago via Twitter</small></p>      ' +
+        '</div>' +
+        '<p><strong id="applicant-land-use">'+$app.data('app-land-use')+'</strong></p>' +
+        '<div class="timeline-body">' +
+        '<p id="applicant-purpose">'+$app.data('app-purpose')+'</p>' +
+        '</div></div></div>';
+      view.infowindow.setContent(contentString);
     });
   }
 
