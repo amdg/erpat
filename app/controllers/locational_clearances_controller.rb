@@ -50,6 +50,7 @@ class LocationalClearancesController < ApplicationController
   def show
     @lc = LocationalClearance.find(params[:id])
     authorize @lc
+    render json: @lc
   end
 
   private
