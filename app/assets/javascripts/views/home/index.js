@@ -32,21 +32,11 @@ com.glados.views.home.index = {
       '<label for="land_use"><select name="land_use" class="save-type"><option value="Agricultural">Agricultural</option>' +
       '<option value="Agricultural Nursery">Agricultural Nursery</option>'+
       '<option value="Agri-industrial">Agri-industrial</option>' +
-      '<option value="Cemeteries">Cemeteries</option>' +
       '<option value="Commercial">Commercial</option>' +
-      '<option value="Cemeteries">Cemeteries</option>' +
-      '<option value="Dumpsite">Dumpsite</option>' +
-      '<option value="Ecopark">Ecopark</option>' +
       '<option value="Agro-ecotourism">Agro-ecotourism</option>' +
-      '<option value="Forest Reserves">Forest Reserves</option>' +
       '<option value="Industrial">Industrial</option>' +
       '<option value="Institutional">Institutional</option>' +
-      '<option value="Irrigable Land">Irrigable Land</option>' +
-      '<option value="Parks">Parks</option>' +
-      '<option value="Proposed Dumpsite">Proposed Dumpsite</option>' +
       '<option value="Residential">Residential</option>' +
-      '<option value="River">River</option>' +
-      '<option value="Transport/Utilities">Transport/Utilities</option>' +
       '</select></label>'+
       '<label for="purpose"><textarea name="purpose" class="save-desc" placeholder="Enter Purpose" maxlength="150"></textarea></label>'+
       '<input type="hidden" name="lat" id="loc_lat" value="0" />'+

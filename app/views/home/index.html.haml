@@ -4,17 +4,36 @@
     -#%input{type:"checkbox", id:"layer0", onclick:"com.glados.views.home.index.toggleLayer(0)"}
     -#%label{for:"layer0"}
     -#  Landslide
-    %p Zoning
+    %p Hazard
     %input{type:"checkbox", id:"layer1", onclick:"com.glados.views.home.index.toggleLayer(1)"}
     %label{for:"layer1"}
-      Residential
+      Severely Eroded Area
     %br/
     %input{type:"checkbox", id:"layer2", onclick:"com.glados.views.home.index.toggleLayer(2)"}
     %label{for:"layer2"}
-      Commercial
+      Flood Prone Area
     %br/
     %input{type:"checkbox", id:"layer3", onclick:"com.glados.views.home.index.toggleLayer(3)"}
     %label{for:"layer3"}
+      Flashflood
+    %br/
+    %input{type:"checkbox", id:"layer4", onclick:"com.glados.views.home.index.toggleLayer(4)"}
+    %label{for:"layer4"}
+      Fault Line
+
+    %hr
+
+    %p Zoning
+    %input{type:"checkbox", id:"layer5", onclick:"com.glados.views.home.index.toggleLayer(5)"}
+    %label{for:"layer5"}
+      Residential
+    %br/
+    %input{type:"checkbox", id:"layer6", onclick:"com.glados.views.home.index.toggleLayer(6)"}
+    %label{for:"layer6"}
+      Commercial
+    %br/
+    %input{type:"checkbox", id:"layer7", onclick:"com.glados.views.home.index.toggleLayer(7)"}
+    %label{for:"layer7"}
       Agricultural
     -#<input type="checkbox" id="layer0" onclick="com.glados.views.home.index.toggleLayer(0)">Landslide <br>
     -#<input type="checkbox" id="layer1" onclick="com.glados.views.home.index.toggleLayer(1)">Storm Surge 1<br>
@@ -34,4 +53,4 @@
 
   #instruction.hide
     .alert
-      %p Click to drop <strong>pin</strong> to mark your building location on the current map.
+      %p Click to drop <strong>pin</strong> and mark your building location on the current map.

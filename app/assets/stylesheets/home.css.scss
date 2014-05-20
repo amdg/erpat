@@ -29,7 +29,7 @@ html, body {
 }
 
 .round_popup {
-  background:#18bc9c asset-url('/assets/erpat-icon.png')  center 40px no-repeat;
+  background:#18bc9c;
   color:#fff;
   width:600px;
   height:600px;
@@ -44,7 +44,7 @@ html, body {
   .text {
     width:560px;
     position:absolute;
-    top:200px;
+    top:150px;
     left:20px;
     text-align:center;
   }
@@ -109,4 +109,8 @@ button.save-marker, button.remove-marker{border: none;background: rgba(0, 0, 0, 
   p {
     color:#fff;
   }
+}
+
+label {
+  font-weight: 200;
 }
