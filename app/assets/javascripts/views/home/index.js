@@ -8,10 +8,10 @@ com.glados.views.home.index = {
     var view = com.glados.views.home.index;
 
 
-    view.layers[0] = new google.maps.KmlLayer({url: 'http://downloads.noah.dost.gov.ph/downloads/special/landslides/landslide_inventory/nationwide-li.KML', preserveViewport: true, suppressInfoWindows: false});
-    view.layers[1] = new google.maps.KmlLayer({url: 'http://downloads.noah.dost.gov.ph/downloads/Iba_na_ang_Panahon_Nationwide_IEC/Region%20III/storm%20surge/HM_0_2.kmz', preserveViewport: true, suppressInfoWindows: false});
-    view.layers[2] = new google.maps.KmlLayer({url: 'http://downloads.noah.dost.gov.ph/downloads/Iba_na_ang_Panahon_Nationwide_IEC/Region%20III/storm%20surge/HM_2_4.kmz', preserveViewport: true, suppressInfoWindows: false});
-    view.layers[3] = new google.maps.KmlLayer({url: 'http://downloads.noah.dost.gov.ph/downloads/Iba_na_ang_Panahon_Nationwide_IEC/Region%20III/storm%20surge/HM_4_6.kmz', preserveViewport: true, suppressInfoWindows: false});
+    view.layers[0] = new google.maps.KmlLayer({url: '/maps/hazard.kmz', preserveViewport: true, suppressInfoWindows: false});
+    view.layers[1] = new google.maps.KmlLayer({url: '/maps/hazard.kmz', preserveViewport: true, suppressInfoWindows: false});
+    view.layers[2] = new google.maps.KmlLayer({url: '/maps/hazard.kmz', preserveViewport: true, suppressInfoWindows: false});
+    view.layers[3] = new google.maps.KmlLayer({url: '/maps/hazard.kmz', preserveViewport: true, suppressInfoWindows: false});
     for (var i = 0; i < view.layers.length; i++) {
       view.layers[i].setMap(null);
     }
@@ -111,6 +111,7 @@ com.glados.views.home.index = {
 
   toggleLayer: function(i){
     var view = com.glados.views.home.index;
+    console.log(view.layers);
     if (view.layers[i].getMap() === null) {
       google.maps.event.addListener(view.layers[i], "status_changed", function() {
         if (view.layers[i].getStatus() != google.maps.KmlLayerStatus.OK) {
