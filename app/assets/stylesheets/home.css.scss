@@ -4,6 +4,10 @@
   min-height: 100%;
   background: gray;
   display: block;
+
+  img {
+    max-width: none;
+  }
 }
 
 html, body {
