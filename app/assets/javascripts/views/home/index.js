@@ -54,9 +54,9 @@ com.glados.views.home.index = {
       // Locate User
       navigator.geolocation.getCurrentPosition(function(position) {
 //        var myLatlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        var myLatlng = new google.maps.LatLng(14.713,120.934);
+        var myLatlng = new google.maps.LatLng(13.009,124.071);
         view.map.setCenter(myLatlng);
-        view.map.setZoom(14);
+        view.map.setZoom(12);
 
 
         google.maps.event.addListener(view.map, 'click', function(event) {
@@ -128,7 +128,7 @@ com.glados.views.home.index = {
 
   saveMarkerBtn: function(){
     var $saveMarkerForm = $('form#SaveMarker');
-    $('a.save-marker').on('click', function(){
+    $('a.save-marker').off('click').on('click', function(){
       $.ajax({
         type: "POST",
         url: $saveMarkerForm.prop('action'),
